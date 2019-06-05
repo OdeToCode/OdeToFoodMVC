@@ -9,12 +9,27 @@ namespace OdeToFood.Data.Stores
 {
     public class InMemoryRestaurantData : IRestaurantData
     {
+        List<Restaurant> restaurants;
+
+        public InMemoryRestaurantData()
+        {
+            restaurants = new List<Restaurant>()
+            {
+                new Restaurant { Id = 1, Name = "Scott's Pizza", Cuisine = CuisineType.Italian },
+                new Restaurant { Id = 2, Name = "Mel's Place", Cuisine = CuisineType.None },
+                new Restaurant { Id = 3, Name = "General Tso", Cuisine = CuisineType.Chinese },
+                new Restaurant { Id = 4, Name = "Taco House", Cuisine = CuisineType.Mexican }
+            };
+        }
+
+        public Restaurant Get(int id)
+        {
+            return restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
         public IEnumerable<Restaurant> GetAll()
         {
-            yield return new Restaurant { Id = 1, Name = "Scott's Pizza", Cuisine = CuisineType.Italian };
-            yield return new Restaurant { Id = 2, Name = "Mel's Place", Cuisine = CuisineType.None };
-            yield return new Restaurant { Id = 3, Name = "General Tso", Cuisine = CuisineType.Chinese };
-            yield return new Restaurant { Id = 4, Name = "Taco House", Cuisine = CuisineType.Mexican };
+            return restaurants;
         }
     }
 }
