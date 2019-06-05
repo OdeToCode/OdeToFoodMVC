@@ -1,4 +1,5 @@
-﻿using OdeToFood.Data.Stores;
+﻿using OdeToFood.Data.Entities;
+using OdeToFood.Data.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace OdeToFood.Web.Controllers
         public ActionResult Details(int id)
         {
             var model = db.Get(id);
-            if(model != null)   
+            if (model != null)
             {
                 return View(model);
             }
@@ -42,40 +43,41 @@ namespace OdeToFood.Web.Controllers
 
         // POST: Restaurant/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Restaurant restaurant)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
+            if (ModelState.IsValid)
+            {
+                db.Add(restaurant);
+                db.Commit();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View();
         }
 
         // GET: Restaurant/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = db.Get(id);
+            if(model == null)
+            {
+                return View("NotFound");
+            }
+            return View(model);
         }
 
         // POST: Restaurant/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Restaurant restaurant)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Update(restaurant);
+                db.Commit();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Restaurant/Delete/5

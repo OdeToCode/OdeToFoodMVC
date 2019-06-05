@@ -22,6 +22,17 @@ namespace OdeToFood.Data.Stores
             };
         }
 
+        public void Add(Restaurant newRestaurant)
+        {
+            newRestaurant.Id = restaurants.Max(r => r.Id) + 1;
+            restaurants.Add(newRestaurant);
+        }
+
+        public void Commit()
+        {
+            
+        }
+
         public Restaurant Get(int id)
         {
             return restaurants.FirstOrDefault(r => r.Id == id);
@@ -30,6 +41,13 @@ namespace OdeToFood.Data.Stores
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants;
+        }
+
+        public void Update(Restaurant restaurant)
+        {
+            var target = restaurants.Single(r => r.Id == restaurant.Id);
+            target.Name = restaurant.Name;
+            target.Cuisine = restaurant.Cuisine;
         }
     }
 }
