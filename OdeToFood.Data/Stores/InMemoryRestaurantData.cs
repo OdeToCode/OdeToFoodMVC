@@ -7,7 +7,7 @@ using OdeToFood.Data.Entities;
 
 namespace OdeToFood.Data.Stores
 {
-    class InMemoryRestaurantData : IRestaurantData
+    public class InMemoryRestaurantData : IRestaurantData
     {
         public IEnumerable<Restaurant> GetAll()
         {

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OdeToFood.Data.Stores;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,14 +10,23 @@ namespace OdeToFood.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IRestaurantData restaurantData;
+
+        public HomeController(IRestaurantData restaurantData)
+        {
+            this.restaurantData = restaurantData;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var db = new InMemoryRestaurantData();
+            var model = db.GetAll();
+            return View(model);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = ConfigurationManager.AppSettings["Message"]; 
 
             return View();
         }
