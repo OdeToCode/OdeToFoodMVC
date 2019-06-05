@@ -33,6 +33,11 @@ namespace OdeToFood.Data.Stores
             
         }
 
+        public void Delete(int id)
+        {
+            restaurants.Remove(restaurants.Single(r => r.Id == id));
+        }
+
         public Restaurant Get(int id)
         {
             return restaurants.FirstOrDefault(r => r.Id == id);
