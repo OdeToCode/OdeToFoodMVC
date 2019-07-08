@@ -143,6 +143,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GreetingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Greeting\Index.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
