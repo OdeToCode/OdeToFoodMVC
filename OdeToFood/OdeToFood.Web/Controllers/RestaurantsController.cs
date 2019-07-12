@@ -13,7 +13,7 @@ namespace OdeToFood.Web.Controllers
         private readonly IRestaurantData db;
 
         public RestaurantsController(IRestaurantData db)
-        {
+        { 
             this.db = db;
         }
 

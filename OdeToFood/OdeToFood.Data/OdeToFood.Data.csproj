@@ -54,6 +54,7 @@
     <Compile Include="Services\InMemoryRestaurantData.cs" />
     <Compile Include="Services\IRestaurantData.cs" />
     <Compile Include="Services\OdeToFoodDbContext.cs" />
+    <Compile Include="Services\SqlRestaurantData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
